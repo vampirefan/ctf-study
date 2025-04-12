@@ -1,6 +1,12 @@
 # Notes for CTF study
 
-## tools
+## 学习笔记
+- S1.AnHengNotes1-4: 第一次培训笔记
+- S1.NCCNotes1-10: 第二次培训笔记
+- writeups-buuctf: buuctf 做题笔记
+- writeups-ctfhub: ctfhub 做题笔记
+
+## Tools
 
 ### 环境
 - python 3.9
