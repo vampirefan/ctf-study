@@ -16,11 +16,14 @@
 - [docker](https://www.docker.com/)
 - [wsl](https://learn.microsoft.com/zh-cn/windows/wsl/install)：Windows 上安装 Linux 虚拟机
 
+### 加解密工具
+- [CyberChef](https://github.com/gchq/CyberChef/releases)
+
 ### 抓包
-- [yakit](https://github.com/yaklang/yakit)
+- [yakit](https://github.com/yaklang/yakit)：安装后点击左上角铃铛来安装其证书
 - [yakit-chrome-extension](https://github.com/yaklang/yaklang-chrome-extension): 浏览器代理切换插件
 - [SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega): 浏览器代理切换插件
-- [burpsuite](https://portswigger.net/burp/releases/professional-community-2025-1-3)
+- [burpsuite](https://portswigger.net/burp/releases/professional-community-2025-1-3)：将 `BurpLoaderKeygen.jar` 放在安装的根目录下，使用批处理脚本`start.bat`(内容为 `.\jre\bin\java.exe -jar BurpLoaderKeygen.jar`)进行启动。访问本机 8080 端口下载并安装 ca 证书。
 - [burpLoaderKeygen](https://github.com/WankkoRee/BurpLoaderKeygenCnF): 破解 burpsuite
 - [wireshark](https://www.wireshark.org/download.html)
 
@@ -43,7 +46,8 @@
 - [哥斯拉Godzilla](https://github.com/BeichenDream/Godzilla)
 
 ### 攻击及其他
-- [frp](https://github.com/fatedier/frp):frp 是一个专注于内网穿透的高性能的反向代理应用
+- [frp](https://github.com/fatedier/frp)：frp 是一个专注于内网穿透的高性能的反向代理应用
 
 ### 防御
 - [蜜罐hfish](https://hfish.net/#/)
+- [MySQL_Fake_Server](https://github.com/fnmsd/MySQL_Fake_Server)：假数据库
