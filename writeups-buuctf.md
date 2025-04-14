@@ -201,3 +201,54 @@ flag{zs19900315}
 
 # 篱笆墙的影子
 还是使用 CyberChef，选择 `Rail Fence Cipher Encode`, kev = 2, offset = 0
+
+# rabbit
+使用加解密工具解密
+- [jsons](http://www.jsons.cn/rabbitencrypt/)
+
+# rsa
+把题目丢给 AI，让他帮忙写 python 脚本解题：
+```py
+from Crypto.Util.number import inverse
+
+# 已知的参数
+p = 473398607161
+q = 4511491
+e = 17
+
+# 计算 n 和 φ(n)
+n = p * q
+phi = (p - 1) * (q - 1)
+
+# 计算 d，使得 d ≡ e⁻¹ mod φ(n)
+d = inverse(e, phi)
+
+# 输出结果
+print("d =", d)
+```
+计算得到 `125631357777427553`，提交 flag{125631357777427553}
+
+# 丢失的MD5
+题目丢给AI，AI会帮我们重写脚本：
+```python
+import hashlib
+
+for i in range(32, 127):
+    for j in range(32, 127):
+        for k in range(32, 127):
+            s = "TASC" + chr(i) + "O3RJMV" + chr(j) + "WDJKX" + chr(k) + "ZM"
+            m = hashlib.md5()
+            m.update(s.encode())  # Python 3 要先 encode 成 bytes
+            des = m.hexdigest()
+            if "e9032" in des and "da" in des and "911513" in des:
+                print("Match found!")
+                print("Input string:", s)
+                print("MD5 hash:    ", des)
+```
+跑出来结果：
+```
+Match found!
+Input string: TASCJO3RJMVKWDJKXLZM
+MD5 hash:     e9032994dabac08080091151380478a2
+```
+
