@@ -27,6 +27,7 @@
 - [yakit](https://github.com/yaklang/yakit)：安装后点击左上角铃铛来安装其证书
 - [yakit-chrome-extension](https://github.com/yaklang/yaklang-chrome-extension): 浏览器代理切换插件
 - [SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega): 浏览器代理切换插件
+- [quick-javascript-switcher](https://github.com/maximelebreton/quick-javascript-switcher): 浏览器 js 开关插件
 - [burpsuite](https://portswigger.net/burp/releases/professional-community-2025-1-3)：将 `BurpLoaderKeygen.jar` 放在安装的根目录下，使用批处理脚本`start.bat`(内容为 `.\jre\bin\java.exe -jar BurpLoaderKeygen.jar`)进行启动。访问本机 8080 端口下载并安装 ca 证书。
 - [burpLoaderKeygen](https://github.com/WankkoRee/BurpLoaderKeygenCnF): 破解 burpsuite
 - [wireshark](https://www.wireshark.org/download.html)
@@ -46,6 +47,9 @@
 - [common.txt](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/common.txt): 常见目录文件名
 - [GitHack](https://github.com/lijiejie/GitHack)：扫描和下载 Git 泄露的日志文件
 - [dvcs-ripper](https://github.com/kost/dvcs-ripper)：扫描和下载 SVN/Git/Hg 泄露日志文件
+
+- [nessus](https://github.com/elliot-bia/nessus)
+- [openvas](https://github.com/mikesplain/openvas-docker)
 
 ### webshell 管理器
 利用文件上传漏洞

